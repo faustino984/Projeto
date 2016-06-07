@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">MyMusicAPP</string>
+    <string name="text_search">Find Music</string>
+    <string name="bottom_search">Search</string>
+    <string name="bottom_clear">Clear</string>
+    <string name="bottom_add">Add Album</string>
+    <string name="artist">Artist:</string>
+    <string name="album">Album:</string>
+    <string name="year">Year:</string>
+    <string name="editor">Editor:</string>
+    <string name="En">English</string>
+    <string name="Pt">Portuguese</string>
+    <string name="Op">Options</string>
+    <string name="msm">Showing all Music</string>
+    <string name="Aviso">Warning</string>
+    <string name="Aviso_perg">Are you sure you want to delete your listView ?</string>
+    <string name="limp_s">Cleared All Songs</string>
+    <string name="New">New Song</string>
+    <string name="No_Criar">You have not created any music</string>
+    <string name="Criar">New Music Created</string>
+    <string name="no_found">No results found. Showing all Music</string>
+    <string name="prev">previous music</string>
+    <string name="next">The next music</string>
+    <string name="play">Play The Song</string>
+    <string name="exit">Exit</string>
+    <string name="exit_msm">Get Out Of Your APP</string>
+    <string-array name="Option">
+        <item>ALL</item>
+        <item>ALBUM</item>
+        <item>ARTIST</item>
+        <item>YEAR</item>
+        <item>EDITOR</item>
+        <item>RATING</item>
+    </string-array>
+</resources>

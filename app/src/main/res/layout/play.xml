@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/artist"
+            android:id="@+id/textView_Artist" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_Artista_name"
+            android:hint="Name the artist!!!!"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/album"
+            android:id="@+id/textView_Album" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_Album_name"
+            android:hint="Name the song!!!!"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp">
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:id="@+id/button_prev"
+            android:background="@android:drawable/ic_media_previous"
+            android:onClick="prev" />
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:id="@+id/button_pausa"
+            android:background="@android:drawable/ic_media_pause"
+            android:onClick="pausa"
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:id="@+id/button_play"
+            android:background="@android:drawable/ic_media_play"
+            android:onClick="play"
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:id="@+id/button_next"
+            android:background="@android:drawable/ic_media_next"
+            android:onClick="next"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+</LinearLayout>
