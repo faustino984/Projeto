@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         musicas = new ArrayList<String>(musicaset);
-//        musicas.add("Não Dá ★ D.A.M.A ★ 2015 ★ 3stars");
-//        musicas.add("Homen do Leme ★ Xutos e Pontapés ★ 1993 ★ 3stars");
-//        musicas.add("Carry On ★ Avenged Sevenfold ★ 2012 ★ 5stars");
-//        musicas.add("Parte-me o Pescoço ★ AGIR ★ 2015 ★ 4stars");
-//        musicas.add("Dizir Que Não ★ Dengaz feat. Matay ★ 2015 ★ 4stars");
-//        musicas.add("Lonely day ★ System Of a Down ★ 2005 ★ 5stars");
+        musicas.add("Não Dá ★ D.A.M.A ★ 2015 ★ 3stars");
+        musicas.add("Homen do Leme ★ Xutos e Pontapés ★ 1993 ★ 3stars");
+        musicas.add("Carry On ★ Avenged Sevenfold ★ 2012 ★ 5stars");
+        musicas.add("Parte-me o Pescoço ★ AGIR ★ 2015 ★ 4stars");
+        musicas.add("Dizir Que Não ★ Dengaz feat. Matay ★ 2015 ★ 4stars");
+        musicas.add("Lonely day ★ System Of a Down ★ 2005 ★ 5stars");
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, musicas);
