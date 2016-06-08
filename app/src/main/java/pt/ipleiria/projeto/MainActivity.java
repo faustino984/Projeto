@@ -2,6 +2,7 @@ package pt.ipleiria.projeto;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        musicas = new ArrayList<String>();
+        SharedPreferences sp = getSharedPreferences("appmusicas", 0);
+        Set<String> musicaset = sp.getStringSet("musicasKey", new HashSet<String>());
+
+
+        musicas = new ArrayList<String>(musicaset);
         musicas.add("Não Dá ★ D.A.M.A ★ 2015 ★ 3stars");
         musicas.add("Homen do Leme ★ Xutos e Pontapés ★ 1993 ★ 3stars");
         musicas.add("Carry On ★ Avenged Sevenfold ★ 2012 ★ 5stars");
@@ -109,6 +116,18 @@ public class MainActivity extends AppCompatActivity {
     }
     public void next (View view){
         Toast.makeText(MainActivity.this,R.string.next, Toast.LENGTH_SHORT).show();
+    }
+    protected void onStop() {
+        super.onStop();
+
+        Toast.makeText(MainActivity.this, "A Guardar Contactos", Toast.LENGTH_SHORT).show();
+
+        SharedPreferences sp = getSharedPreferences("appmusicas",0);
+        SharedPreferences.Editor edit = sp.edit();
+        HashSet contactsSet = new HashSet(musicas);
+        edit.putStringSet("musicasKey", contactsSet);
+        edit.commit();
+
     }
 
     //botão do procurar as musicas do ListView
