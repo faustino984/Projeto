@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         musicas = new ArrayList<String>(musicaset);
-        musicas.add("Não Dá ★ D.A.M.A ★ 2015 ★ 3stars");
+        //musicas.add("Não Dá ★ D.A.M.A ★ 2015 ★ 3stars");
         musicas.add("Homen do Leme ★ Xutos e Pontapés ★ 1993 ★ 3stars");
         musicas.add("Carry On ★ Avenged Sevenfold ★ 2012 ★ 5stars");
         musicas.add("Parte-me o Pescoço ★ AGIR ★ 2015 ★ 4stars");
