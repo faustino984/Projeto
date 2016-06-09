@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         musicas = new ArrayList<String>(musicaset);
-        //musicas.add("Não Dá ★ D.A.M.A ★ 2015 ★ 3stars");
+        musicas.add("Não Dá ★ D.A.M.A ★ 2015 ★ 3stars");
         musicas.add("Homen do Leme ★ Xutos e Pontapés ★ 1993 ★ 3stars");
         musicas.add("Carry On ★ Avenged Sevenfold ★ 2012 ★ 5stars");
         musicas.add("Parte-me o Pescoço ★ AGIR ★ 2015 ★ 4stars");
@@ -50,6 +50,38 @@ public class MainActivity extends AppCompatActivity {
         final ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         //Quando clicarmos no item da lista de musicas
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+           public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+               AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+               builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       // User clicked OK button
+
+                       musicas.remove(position);
+                       ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1, musicas);
+                       ListView listView = (ListView) findViewById(R.id.listView);
+                       listView.setAdapter(adapter);
+
+                       Toast.makeText(MainActivity.this,R.string.limp_s + position, Toast.LENGTH_SHORT).show();
+                   }
+               });
+               builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       // User cancelled the dialog
+
+                   }
+               });
+               // Set other dialog properties
+               builder.setTitle(R.string.Aviso);
+               builder.setMessage(R.string.Aviso_perg);
+               builder.setIcon(R.drawable.aviso);
+               // Create the AlertDialog
+               AlertDialog dialog = builder.create();
+               dialog.show();
+               return true;
+           }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object o = listView.getItemAtPosition(position);
