@@ -68,6 +68,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+
+                        ListView lv = (ListView) findViewById(R.id.listView);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, musicas);
+                        lv.setAdapter(adapter);
+
+                        musicas.remove(position);
+
+                        Toast.makeText(MainActivity.this,R.string.limp_s+position, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+
+                    }
+                });
+                // Set other dialog properties
+                builder.setTitle(R.string.Aviso);
+                builder.setMessage(R.string.Aviso_perg);
+                builder.setIcon(R.drawable.aviso);
+                // Create the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return true;
+            }
+        });
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.Option, android.R.layout.simple_spinner_item);
