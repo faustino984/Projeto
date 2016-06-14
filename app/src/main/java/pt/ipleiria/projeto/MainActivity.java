@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         musicas = new ArrayList<String>(musicaset);
 
-
+// ve se da
         SimpleAdapter adapter = createSimpleAdapter(musicas);
 
 //        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
