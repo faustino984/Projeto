@@ -2,8 +2,10 @@ package pt.ipleiria.projeto;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> musicas;
     private MediaPlayer mediaPlayer;
+    private ArrayList<String> link_music;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("appmusicas", 0);
         Set<String> musicaset = sp.getStringSet("musicasKey", new HashSet<String>());
-
+        Set<String> youtubeSet = sp.getStringSet("youtubeKey", new HashSet<String>());
 
         musicas = new ArrayList<String>(musicaset);
+        link_music = new ArrayList<String>(youtubeSet);
 
-// ve se da
+        // ve se da
         SimpleAdapter adapter = createSimpleAdapter(musicas);
 
 //        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -49,58 +53,27 @@ public class MainActivity extends AppCompatActivity {
         final ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         //Quando clicarmos no item da lista de musicas
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-           public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String video = link_music.get(position);
 
-               AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-               builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
-                       // User clicked OK button
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(video)));
 
-                       musicas.remove(position);
-                       SimpleAdapter adapter = createSimpleAdapter(musicas);
-                       ListView listView = (ListView) findViewById(R.id.listView);
-                       listView.setAdapter(adapter);
 
-                       Toast.makeText(MainActivity.this,R.string.limp_s + position, Toast.LENGTH_SHORT).show();
-                   }
-               });
-               builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
-                       // User cancelled the dialog
-
-                   }
-               });
-               // Set other dialog properties
-               builder.setTitle(R.string.Aviso);
-               builder.setMessage(R.string.Aviso_perg);
-               builder.setIcon(R.drawable.aviso);
-               // Create the AlertDialog
-               AlertDialog dialog = builder.create();
-               dialog.show();
-               return true;
-           }
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, R.string.Invalid, Toast.LENGTH_SHORT).show();
+                }
+            }
         });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object o = listView.getItemAtPosition(position);
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                LayoutInflater inflater = getLayoutInflater();
-                builder.setView(inflater.inflate(R.layout.play, null));
 
                 String str = o.toString();
                 Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
-
-
-
-
-                // Set other dialog properties
-                builder.setTitle(R.string.play);
-                builder.setIcon(R.drawable.play);
-
-                // Create the AlertDialog
-                AlertDialog dialog = builder.create();
-                dialog.show();
             }
         });
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -120,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("appmusicas",0);
         SharedPreferences.Editor edit = sp.edit();
         HashSet contactsSet = new HashSet(musicas);
+        HashSet youtubeSet = new HashSet(link_music);
+
+        edit.putStringSet("youtubeKey", youtubeSet);
         edit.putStringSet("musicasKey", contactsSet);
         edit.commit();
 
@@ -221,18 +197,21 @@ public class MainActivity extends AppCompatActivity {
                 EditText etAlbum = (EditText) al.findViewById(R.id.editText_album);
                 EditText etYear = (EditText) al.findViewById(R.id.editText_year);
                 EditText etEditor = (EditText) al.findViewById(R.id.editText);
+                EditText etlink = (EditText) al.findViewById(R.id.editlink);
                 RatingBar star = (RatingBar) al.findViewById(R.id.ratingBar);
 
                 String artist = etArtist.getText().toString();
                 String album = etAlbum.getText().toString();
                 String year = etYear.getText().toString();
                 String editor = etEditor.getText().toString();
+                String link = etlink.getText().toString();
                 int starRating = (int)star.getRating();
 
-                String newMusic = "★ "+ album + " ★ " + "|" + artist + " ★ "+ "|" + year + " ★ "+ "|"+ editor + " ★ "+ "|" + starRating + "stars";
+                String newMusic = "? "+ album + " ? " + "|" + artist + " ? "+ "|" + year + " ? "+ "|" + editor + " ? "+ "|" + starRating + "stars";
 
                 if (!artist.isEmpty() || !album.isEmpty() || !year.isEmpty() || !editor.isEmpty()) {
                     musicas.add(newMusic);
+                    link_music.add(link);
                     Toast.makeText(MainActivity.this, R.string.Criar, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, R.string.No_Criar, Toast.LENGTH_SHORT).show();

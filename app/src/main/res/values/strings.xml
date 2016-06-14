@@ -18,13 +18,10 @@
     <string name="New">New Song</string>
     <string name="No_Criar">You have not created any music</string>
     <string name="link">Link</string>
+    <string name="Invalid">The connection does not exist</string>
     <string name="Criar">New Music Created</string>
     <string name="no_found">No results found. Showing all Music</string>
-    <string name="prev">previous music</string>
-    <string name="next">The next music</string>
-    <string name="play">Play The Song</string>
     <string name="exit">Exit</string>
-    <string name="exit_msm">Get Out Of Your APP</string>
     <string-array name="Option">
         <item>ALL</item>
         <item>ALBUM</item>
