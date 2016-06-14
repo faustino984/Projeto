@@ -68,14 +68,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object o = listView.getItemAtPosition(position);
-
-                String str = o.toString();
-                Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
-            }
-        });
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.Option, android.R.layout.simple_spinner_item);
