@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         // User clicked OK button
 
                         ListView lv = (ListView) findViewById(R.id.listView);
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, musicas);
+                        SimpleAdapter adapter = createSimpleAdapter(musicas);
                         lv.setAdapter(adapter);
 
                         musicas.remove(position);

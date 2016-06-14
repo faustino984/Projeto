@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyMusicAPP</string>
+    <string name="Aviso">Aviso</string>
+    <string name="Aviso_perg">Tens acerteza que quere apagar a sua listview </string>
+    <string name="En">Inglês</string>
+    <string name="Criar">Nova Musica Criada</string>
+    <string name="Invalid">A ligação não existe </string>
+    <string name="New">Nova Musica</string>
+    <string name="No_Criar">Não Criastes nenhuma musica</string>
+    <string name="Op">Opções</string>
+    <string name="Pt">Protuguês</string>
+    <string name="album">Album:</string>
+    <string name="artist">Artista:</string>
+    <string name="bottom_add">Adicionar Album</string>
+    <string name="bottom_clear">Limpar</string>
+    <string name="bottom_search">Procucar</string>
+    <string name="editor">Editora:</string>
+    <string name="exit">Sair</string>
+    <string name="limp_s">Apagou todas as musicas</string>
+    <string name="link">Link:</string>
+    <string name="msm">Mostrar todas as musicas</string>
+    <string name="no_found">Resultados não encontrados. Mostrar todas as musicas</string>
+    <string name="text_search">Procurar Musica</string>
+    <string name="year">Ano:</string>
+</resources>
