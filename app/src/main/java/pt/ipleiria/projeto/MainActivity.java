@@ -41,15 +41,15 @@ public class MainActivity extends AppCompatActivity {
         Set<String> youtubeSet = sp.getStringSet("youtubeKey", new HashSet<String>());
 
         musicas = new ArrayList<String>(musicSet);
-        link_music = new ArrayList<String>(youtubeSet);
+
 
         SimpleAdapter adapter = createSimpleAdapter(musicas);
 
-//        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1, musicas);
-
-        final ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
+
+        link_music = new ArrayList<String>(youtubeSet);
+
         //Quando clicarmos no item da lista de musicas
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -64,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
+                R.array.Option, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter1);
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -99,19 +105,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.Option, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner.setAdapter(adapter1);
-
     }
     //Botões para o layout do play
 
     protected void onStop() {
         super.onStop();
 
-        Toast.makeText(MainActivity.this, "A Guardar Contactos", Toast.LENGTH_SHORT).show();
 
         SharedPreferences sp = getSharedPreferences("appmusicas",0);
         SharedPreferences.Editor edit = sp.edit();
@@ -119,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
         HashSet musicsSet = new HashSet(musicas);
         HashSet youtubeSet = new HashSet(link_music);
 
-        edit.putStringSet("youtubeKey", youtubeSet);
         edit.putStringSet("musicasKey", musicsSet);
+        edit.putStringSet("youtubeKey", youtubeSet);
         edit.commit();
 
     }
@@ -233,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String newMusic = "★ "+ album + " ★ " + "|" + artist + " ★ "+ "|" + year + " ★ "+ "|" + editor + " ★ "+ "|" + starRating + "stars";
 
-                if (!artist.isEmpty() || !album.isEmpty() || !year.isEmpty() || !editor.isEmpty()) {
+                if (!artist.isEmpty() && !album.isEmpty() && !year.isEmpty() && !editor.isEmpty() && !link.isEmpty()) {
                     musicas.add(newMusic);
                     link_music.add(link);
                     Toast.makeText(MainActivity.this, R.string.Criar, Toast.LENGTH_SHORT).show();
