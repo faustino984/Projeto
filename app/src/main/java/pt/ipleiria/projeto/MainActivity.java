@@ -78,14 +78,13 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // User clicked OK button
+                        musicas.remove(position);
 
                         ListView lv = (ListView) findViewById(R.id.listView);
                         SimpleAdapter adapter = createSimpleAdapter(musicas);
                         lv.setAdapter(adapter);
 
-                        musicas.remove(position);
-
-                        Toast.makeText(MainActivity.this,R.string.limp_s+position, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,R.string.limp_s + position, Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
