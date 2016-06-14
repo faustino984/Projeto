@@ -13,7 +13,7 @@
         android:layout_marginRight="25dp">
 
         <TextView
-            android:layout_width="71dp"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/album"
@@ -36,7 +36,7 @@
         android:layout_marginRight="25dp">
 
         <TextView
-            android:layout_width="70dp"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/artist"
@@ -59,7 +59,7 @@
         android:layout_marginRight="25dp">
 
         <TextView
-            android:layout_width="69dp"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/year"
@@ -84,7 +84,7 @@
         android:layout_marginRight="25dp" >
 
         <TextView
-            android:layout_width="69dp"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/editor"
@@ -92,7 +92,7 @@
             android:layout_gravity="top" />
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="237dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
@@ -108,7 +108,7 @@
         android:layout_marginRight="25dp" >
 
         <TextView
-            android:layout_width="69dp"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/link"
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
-            android:id="@+id/editlink" />
+            android:id="@+id/edit_link" />
     </LinearLayout>
 
     <RatingBar

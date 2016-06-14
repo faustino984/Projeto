@@ -30,7 +30,6 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> musicas;
-    private MediaPlayer mediaPlayer;
     private ArrayList<String> link_music;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -38,13 +37,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences sp = getSharedPreferences("appmusicas", 0);
-        Set<String> musicaset = sp.getStringSet("musicasKey", new HashSet<String>());
+        Set<String> musicSet = sp.getStringSet("musicasKey", new HashSet<String>());
         Set<String> youtubeSet = sp.getStringSet("youtubeKey", new HashSet<String>());
 
-        musicas = new ArrayList<String>(musicaset);
+        musicas = new ArrayList<String>(musicSet);
         link_music = new ArrayList<String>(youtubeSet);
 
-        // ve se da
         SimpleAdapter adapter = createSimpleAdapter(musicas);
 
 //        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -60,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(video)));
-
 
                 } catch (Exception e) {
                     Toast.makeText(MainActivity.this, R.string.Invalid, Toast.LENGTH_SHORT).show();
@@ -118,11 +115,12 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("appmusicas",0);
         SharedPreferences.Editor edit = sp.edit();
-        HashSet contactsSet = new HashSet(musicas);
+
+        HashSet musicsSet = new HashSet(musicas);
         HashSet youtubeSet = new HashSet(link_music);
 
         edit.putStringSet("youtubeKey", youtubeSet);
-        edit.putStringSet("musicasKey", contactsSet);
+        edit.putStringSet("musicasKey", musicsSet);
         edit.commit();
 
     }
@@ -223,17 +221,17 @@ public class MainActivity extends AppCompatActivity {
                 EditText etAlbum = (EditText) al.findViewById(R.id.editText_album);
                 EditText etYear = (EditText) al.findViewById(R.id.editText_year);
                 EditText etEditor = (EditText) al.findViewById(R.id.editText);
-                EditText etlink = (EditText) al.findViewById(R.id.editlink);
+                EditText et_link = (EditText) al.findViewById(R.id.edit_link);
                 RatingBar star = (RatingBar) al.findViewById(R.id.ratingBar);
 
                 String artist = etArtist.getText().toString();
                 String album = etAlbum.getText().toString();
                 String year = etYear.getText().toString();
                 String editor = etEditor.getText().toString();
-                String link = etlink.getText().toString();
+                String link = et_link.getText().toString();
                 int starRating = (int)star.getRating();
 
-                String newMusic = "? "+ album + " ? " + "|" + artist + " ? "+ "|" + year + " ? "+ "|" + editor + " ? "+ "|" + starRating + "stars";
+                String newMusic = "★ "+ album + " ★ " + "|" + artist + " ★ "+ "|" + year + " ★ "+ "|" + editor + " ★ "+ "|" + starRating + "stars";
 
                 if (!artist.isEmpty() || !album.isEmpty() || !year.isEmpty() || !editor.isEmpty()) {
                     musicas.add(newMusic);
